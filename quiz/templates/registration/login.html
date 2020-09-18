@@ -11,10 +11,10 @@ Login Here
 
 
 </style>
-     <form method="post" class="from-group" action="{% url 'quiz:login' %}?next={{ request.GET.next }}">
+     <form method="post" class="from-group text-white" action="{% url 'quiz:login' %}?next={{ request.GET.next }}">
 	{% csrf_token %}
 	{{form|crispy}}
-	<p>Don't have an account? Create one <a  href=" {% url 'quiz:register' %}">here</a></p>
+	<p>Don't have an account? Create one <a  class="text-danger" href=" {% url 'quiz:register' %}">here</a></p>
 	<button type="submit" class="btn btn-success">Login</button>	
     </form>
 {% endblock %}

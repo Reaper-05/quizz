@@ -8,14 +8,14 @@
 
 {% block content %}
 <style>
-    input {max-width: 20em},
+    input {max-width: 20em}
+    .fon{color: white}
 
-}
 </style>
-<div clas="box large-row-spacer">
-    <form method="POST" class="form-group large-row-spacer" >
+<div clas="box large-row-spacer fon">
+    <form method="POST" class="form-group large-row-spacer bg-white text-dark" >
 	{% csrf_token %}
-  {% crispy form %}
+  {{form|crispy}}
 
 	<button type="submit" class="btn btn-success">Register</button>
     </form>
