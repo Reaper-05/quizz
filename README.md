@@ -39,3 +39,14 @@ Some of the animations are used are credited by open source providers.
 #### Status
 Debug=True 
 In development 
+
+#### Description: 
+The app has 4 subjects primarily which user can pick. 
+The user needs to register or sign-in to take part in the quiz.
+Results are available in the navigation. 
+Each subject will show how many questions are avilable for you.
+Clicking on the question the quiz will start and you answer will be saved.
+The result will be showcased after each question.
+with options to continue or change the subject.
+
+For credits: Check About.
