@@ -1,0 +1,315 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Oswald', sans-serif;
+}
+button{
+    font-family: 'Oswald', sans-serif;
+}
+
+.modal div{
+    top:60%;
+    background:#116466;
+    /* width: 150px; */
+    /* height: 50px; */
+    cursor: pointer;
+    font-size:16px;
+    color:white;
+    border: 1px solid white ;
+    /* margin: 30px 0px 0px 30px; */
+
+}
+
+.fp-enabled .modal{
+   position:fixed !important;
+}
+
+.logo-container,
+.nav-links,.cart{
+   display: flex;
+   color: #66FCF1;
+}
+
+.logo-container{
+ /* background: lightblue; */
+ flex:2;
+ 
+}
+.logo-container img{
+    width: 60px;
+    height: 60px;
+    filter: drop-shadow(2px 5px 3px #1F2833);
+}
+
+nav{
+    justify-content: flex-start;
+    /* background: greenyellow; */
+    flex:1;
+}
+
+.logo{
+    font-weight:400 ;
+    margin: 5px;
+}
+.nav-link{
+    color: #66FCF1;
+    /* color: rgba(38, 18, 109, 0.397); */
+    font-size: 18px;
+    text-decoration: none;
+}
+.nav-links{
+    
+    justify-content: space-around;
+    list-style: none;
+
+
+
+}
+.s0{
+    background-size: cover;
+    background-image: url('../../quiz/img/space.webp'); 
+
+}
+.science{
+  
+   
+    color: #66FCF1;
+    background-size: cover;
+    background-image: url('../../quiz/img/rocket.webp'); 
+}
+.math{
+
+    color: #66FCF1;
+    background-size: cover;
+    background-image: url('../../quiz/img/sphere.webp'); 
+}
+.english{
+
+    color: #66FCF1;
+    background-size: cover;
+    background-image: url('../../quiz/img/english.webp'); 
+}
+.humanities{
+    color: #66FCF1;
+    background-size: cover;
+    background-image: url('../../quiz/img/col.webp'); 
+}
+
+
+
+/* .cover img{
+    height:60vh;
+    flex:1;
+} */
+.introduction{
+    flex:1;
+}
+.intro-text h1,.science h1,.math h1,.english h1,.humanities h1{
+font-size: 44px;
+font-weight: 500;
+background: linear-gradient(to right,#66FCF1,#6f6f89);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+filter: drop-shadow(2px 5px 3px #1F2833);
+}
+.intro-text p,.science p,.math p,.english p,.humanities p{
+    margin-top: 5px;
+    font-weight: 22px;
+    color: #66FCF1;
+    filter: drop-shadow(2px 5px 3px #1F2833);
+    }
+
+
+
+.cta{
+    flex:3;
+    padding: 50px 0px 0px 0px 0px;
+}
+
+
+.cta-select{
+    border:1px solid #116466;
+    background: transparent;
+    color:#66FCF1;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    font-size:16px;
+}
+
+.cta-add{
+    background:#116466;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    font-size:16px;
+    color:white;
+    margin: 30px 0px 0px 30px;
+}
+
+
+.presentation{
+    display: flex;
+    width: 90%;
+    margin: auto;
+    min-height: 80vh;
+    align-items: center;
+}
+.cover img{
+    
+    height:30vh;
+    filter: drop-shadow(0px 5px 3px black);
+}
+.cover{
+    top:0px;
+}
+/* 
+.big-circle{
+    position:absolute;
+    top:0px;
+    right:0px;
+    z-index: -1;
+    opacity: 0.7;
+    height: 60%;
+}
+.small-circle{
+    position:absolute;
+    top:0px;
+    right:0px;
+    z-index: -1;
+    opacity: 0.7;
+    height: 60%;
+} */
+
+#header, #footer{
+    position:fixed;
+    height: 50px;
+    display:flex;
+    width: 100%;
+    background: #333;
+    z-index:9;
+    text-align:center;
+    color: #f2f2f2;
+    padding: 20px 0 0 0;
+}
+
+#header{
+    top:0px;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0);
+    
+}
+#footer{
+    bottom:0px;
+}
+
+
+
+
+
+*body{
+    background: black;
+    color: white;
+}
+
+
+
+
+
+@media screen and (max-width:1024px){
+    .presentation{
+        flex-direction: column;
+    }
+    .introduction{
+        margin-top: 5vh;
+        text-align:center;
+
+    }
+    /*.intro-text h1{*/
+    /*    font-size:20px;*/
+
+    /*}*/
+    /*.intro-text p {*/
+    /*    font-size:15px;*/
+
+    /*}*/
+    .cta{
+        padding:10px 0px 0px 0px;
+    }
+
+}
+/* .welcome{ */
+  /* size: unset;
+    /* font-size: 64px; */
+    /* position: absolute; 
+    top:20%;
+    left:50%;
+    transform: translate(-50%,-20%);
+    background: linear-gradient(to left,#ffffff,#cf0606e0);
+    -webkit-background-clip: text ;
+    -webkit-text-fill-color: transparent;
+}
+.pos{
+   
+    float:right;
+    margin-right:50%;
+    margin-top:65%;
+    
+}
+.home{
+    background: black; 
+    background-size: cover;
+     background-image: url('../../quiz/img/space.webp'); 
+}
+ .describe{ 
+    font-size: 24px;
+    position: absolute;
+    top:60%;
+    left:50%;
+    transform: translate(-50%,-40%);
+   
+    color: white;
+
+} */
+/* .science{
+    height: 60%;
+    position: absolute;;
+    top:70%;
+    left:50%;
+    transform: translate(-50%,-70%);
+
+}
+
+.section h1{
+    font-size: 64px;
+    position: absolute;
+    top:20%;
+    left:70%;
+    transform: translate(-50%,-20%);
+    background: linear-gradient(to left,#87A810,#58A810);
+    -webkit-background-clip: text ;
+    -webkit-text-fill-color: transparent;
+}
+.s2{
+    font-size: 48px;
+    background: linear-gradient(to left, #0f2129, #259ec8);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color: transparent;
+}
+.description{
+    margin: 20%;
+    width: 50%;
+    margin-left: 5%;
+    font-size: 20px;
+}
+.description p{
+    margin: 50px 0px;
+    /*width: 50%;*/
+    /*margin-left: 5%;*/
+    /*font-size: 20px;
+}*/
+
+ 
