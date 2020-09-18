@@ -9,7 +9,7 @@ Login Here
 <style>
     input {max-width: 20em}
 
-}
+
 </style>
      <form method="post" class="from-group" action="{% url 'quiz:login' %}?next={{ request.GET.next }}">
 	{% csrf_token %}
