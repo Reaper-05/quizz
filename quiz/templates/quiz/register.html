@@ -1,0 +1,23 @@
+{% extends "quiz/base.html" %}
+
+{% load static %}
+
+
+{% block title %}Create an Account{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<style>
+    input {max-width: 20em},
+
+}
+</style>
+<div clas="box large-row-spacer">
+    <form method="POST" class="form-group large-row-spacer" >
+	{% csrf_token %}
+  {% crispy form %}
+
+	<button type="submit" class="btn btn-success">Register</button>
+    </form>
+	</div>
+{% endblock %}

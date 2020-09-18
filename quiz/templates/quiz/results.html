@@ -1,0 +1,19 @@
+{% extends "quiz/base.html" %}
+
+{% block title %}Questions {{ block.super }}{% endblock %}
+
+{% block content %}
+    <h2 class="msg btn-outline-danger">{{ message }}</h2>
+<div class="result">
+<h1 class="res"> Results</h1>
+
+<h3>Name: {{ user.username }}</h3>
+<h3>Score: {{ user.profile.points_scored }}</h3>
+<h4> Questions attempted: {{ user.profile.questions_attempted  }}</h4>
+<div class="redirect">
+    <a class="redirect btn btn-primary" href="/{{subject_id}}">Continue?</a>
+<a class="redirect btn btn-primary" href="{% url 'quiz:index' %} ">Pick another Subject?</a>
+
+</div>
+</div>
+{% endblock %}

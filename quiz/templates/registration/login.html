@@ -1,0 +1,20 @@
+{% extends "quiz/base.html" %}
+{% block title %}
+Login Here
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<style>
+    input {max-width: 20em}
+
+}
+</style>
+     <form method="post" class="from-group" action="{% url 'quiz:login' %}?next={{ request.GET.next }}">
+	{% csrf_token %}
+	{{form|crispy}}
+	<p>Don't have an account? Create one <a  href=" {% url 'quiz:register' %}">here</a></p>
+	<button type="submit" class="btn btn-success">Login</button>	
+    </form>
+{% endblock %}

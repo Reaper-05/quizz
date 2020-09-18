@@ -1,0 +1,94 @@
+<body>
+
+{% extends "quiz/base.html" %}
+
+{% block title %}Game of Facts {{ block.super }}{% endblock %}
+
+{% block content %}
+    <div class="container-q">
+
+        {% with page_title="Quiz" %}
+
+        {% endwith %}
+
+
+
+
+
+
+
+        <div id="countdown"></div>
+        <div id="timer" value={{ question.timeout }}></div>
+        <div class="quest">
+            <h1>{{ question.question_text }}</h1>
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+            <form id="form" action="{% url 'quiz:selection' question.pk %}" method="post">
+                {% csrf_token %}
+                {% for option in option_set %}
+                    <input type="radio" name="selection" id="select{{ forloop.counter }}"
+                           value="{{ forloop.counter }}">
+                    <label for="select{{ forloop.counter }}">{{ option }}</label><br>
+                {% endfor %}
+                <input type="submit" class="btn btn-danger" value="Submit">
+            </form>
+        </div>
+        <script>
+            $(function () {
+                var shortly = new Date();
+                // alert(""+shortly.getFullYear());
+                shortly.setSeconds(shortly.getSeconds() + {{ question.timeout}});
+
+                $('#countdown').countdown({
+                    until: shortly,
+                    onExpiry: liftOff,
+                    //,expiryUrl:"{% url 'quiz:selection' question.pk %}"
+                    onTick: watchCountdown
+
+                });
+            });
+
+            function watchCountdown(periods) {
+                $('#countdown').css({"background-color": "lightblue", height: 80, 'font-size': '16pt'});
+                if (periods[6] < 5) {
+                    $('#countdown').css("background-color", "red");
+                }
+            };
+
+
+            function liftOff() {
+
+                alert("Time's Up. Your selection is saved");
+                var selected = " ";
+                if ($('form input[type=radio]:checked').length > 0) {
+                    selection = $('form input[type=radio]:checked')[0].value
+                }
+
+                $.ajax({
+                    url: "{% url 'quiz:selection' question.pk %}",
+                    data: {
+                        selection: selected,
+                        csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val(),
+                    }, type: "POST",
+                    success: function (data) {
+                        $("body").html(data)
+                    }
+                });
+
+
+            }
+        </script>
+        <script type="text/javascript"
+                src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../static/quiz/css/jquery.countdown.css">
+        <script type="text/javascript" src="../../static/quiz/js/jquery.plugin.min.js"></script>
+        <script type="text/javascript" src="../../static/quiz/js/jquery.countdown.min.js"></script>
+
+    </div>
+
+{% endblock %}
+
+
+
+
+
+
