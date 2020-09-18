@@ -52,3 +52,8 @@ The result will be showcased after each question.
 with options to continue or change the subject.
 
 For credits: Check About.
+
+#### To run locally
+```
+python manage.py runserver
+```
