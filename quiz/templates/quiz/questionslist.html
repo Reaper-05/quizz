@@ -3,38 +3,42 @@
 {% block title %}Questions {{ block.super }}{% endblock %}
 
 {% block content %}
-<div class="container">
+    <div class="container">
 
-  {% with page_title="Game of Facts" %}
+        {% with page_title="Game of Facts" %}
 
-  {% endwith %}
+        {% endwith %}
 
-<div class="subject-title">
-<div class="focus" data-focus="{{subject.subject_name}}">
-    <div class="focus--mask">
-        <div class="focus--mask-inner" >{{subject.subject_name}}</div>
+        <div class="subject-title">
+            <div class="focus" data-focus="{{ subject.subject_name }}">
+                <div class="focus--mask">
+                    <div class="focus--mask-inner">{{ subject.subject_name }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quiz-info">
+            <p class="quiz-info"> Given below are the questions with points assigned to them.</p>
+            <p class="quiz-info">When you click on the question, a timer with start for that question
+                with four options to select the answer.
+            </p>
+            <p class="quiz-info">Please note you get a single opportunity to answer the question. After opening the
+                link the question is removed.
+            </p>
+        </div>
+
+
+        {% if latest_question_list %}
+            <ol>
+                {% for question in latest_question_list %}
+                    <li><a class="btn btn-dark" href=" {% url 'quiz:question'  question.pk %}"> Question
+                        with {{ question.points }} points</a></li>
+                {% endfor %}
+            </ol>
+        {% else %}
+            <p>No questions are available.</p>
+        {% endif %}
     </div>
-</div>
-</div>
-{#    <h1 class="h1-subject"> {{subject.subject_name}}</h1>#}
-<div class="quiz-info">
-<p class="quiz-info"> Given below are the questions with points assigned to them.</p>
-    <p class="quiz-info">When you click on the question, a timer with start for that question
-    with four options to select the answer.
-    </p>
-</div>
-
-
-{% if latest_question_list %}
-    <ol>
-    {% for question in latest_question_list %}
-        <li><a  class="btn btn-dark"  href=" {% url 'quiz:question'  question.pk %}"> Question with {{ question.points }} points</a></li>
-    {% endfor %}
-    </ol>
-{% else %}
-        <p>No questions are available.</p>
-{% endif %}
-</div>
 
 
 {% endblock %}
