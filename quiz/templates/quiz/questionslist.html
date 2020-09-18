@@ -29,9 +29,9 @@
 
 
         {% if latest_question_list %}
-            <ol>
+            <ol style="color: white">
                 {% for question in latest_question_list %}
-                    <li><a class="btn btn-outline-dark" href=" {% url 'quiz:question'  question.pk %}"> Question
+                    <li><a class="btn btn-outline-light" href=" {% url 'quiz:question'  question.pk %}"> Question
                         with {{ question.points }} points</a></li>
 
                 {% endfor %}
