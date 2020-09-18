@@ -21,6 +21,11 @@
 
 ### This project is deployment ready.
 [Demo]  (https://quizz0.herokuapp.com/)
+For testing: Sample credentials: 
+
+Username: Reaper-05
+
+Password: ujWHATP6H5LsdJW
 
 This app is built using Django, full-page.js and bootstrap4.
 Some of the animations are used are credited by open source providers.
