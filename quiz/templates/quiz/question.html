@@ -1,7 +1,7 @@
 <body>
 
 {% extends "quiz/base.html" %}
-{% load static  %}
+{% load static %}
 
 {% block title %}Game of Facts {{ block.super }}{% endblock %}
 
@@ -11,12 +11,6 @@
         {% with page_title="Quiz" %}
 
         {% endwith %}
-
-
-
-
-
-
 
         <div id="countdown"></div>
         <div id="timer" value={{ question.timeout }}></div>
@@ -81,9 +75,9 @@
         <script type="text/javascript"
                 src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
-        <link rel="stylesheet" type="text/css" href= "{% static 'quiz/css/jquery.countdown.css'  %}"  >
-        <script type="text/javascript" src="{% static 'quiz/js/jquery.plugin.min.js'  %}"  ></script>
-        <script type="text/javascript" src="{% static 'quiz/js/jquery.countdown.min.js'  %}"  ></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'quiz/css/jquery.countdown.css' %}">
+        <script type="text/javascript" src="{% static 'quiz/js/jquery.plugin.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'quiz/js/jquery.countdown.min.js' %}"></script>
 
     </div>
 

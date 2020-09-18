@@ -1,286 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!--https://www.youtube.com/watch?v=gE-Yuu2eEio&t=121s&ab_channel=DevEd-->
 
 <head>
-    {%  load static %}
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" -->
-    <!-- integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"> -->
 
-    <link rel="stylesheet" href="{% static '/quiz/css/fullpage.min.css'  %}">
-    <link rel="stylesheet" href="{% static '/quiz/css/style.css'  %}">
+
+    <link rel="stylesheet" href="{% static '/quiz/css/fullpage.min.css' %}">
+    <link rel="stylesheet" href="{% static '/quiz/css/style.css' %}">
     <!-- <link rel="stylesheet" href="../../static/quiz/css/bootstrap.css"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"  -->
-    <!-- rel="stylesheet"> -->
-
- <title>Game of Facts</title>
+    <title>Game of Facts</title>
 </head>
 
 <body>
-    
 
 
- <!-- Modal Start -->
+<!-- Modal Start -->
 
 
+<div class="modal fade bd-example-modal-sm" id="popup" tabindex="99" role="dialog" aria-labelledby="mySmallModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div id="jumpto" class="nav-links">
 
-
-
-<div class="modal fade bd-example-modal-sm" id="popup" tabindex="99" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
- <div id="jumpto" class="nav-links">
-
-    <a class="nav-link" >Science</a>
-    <a class="nav-link" >Math</a>
-    <a class="nav-link" >English</a>
-    <a class="nav-link" >Humanities</a>
-</div>
- <!-- Modal End -->
-</div>
-</div>
+                <a class="nav-link">Science</a>
+                <a class="nav-link">Math</a>
+                <a class="nav-link">English</a>
+                <a class="nav-link">Humanities</a>
+            </div>
+            <!-- Modal End -->
+        </div>
+    </div>
 </div>
 
 
+<div id="header">
+    <div class="logo-container">
 
-        
+        <img src="{% static 'quiz/img/profile.png' %}" alt="logo"/>
 
-
-    <div id="header">
-        <div class="logo-container">
-
-        <img src="{% static 'quiz/img/profile.png'  %}" alt="logo" />
-      
 
     </div>
     <nav>
         <ul class="nav-links">
 
-            <li><a class="nav-link" href="{% url 'quiz:login' %}">{{user}}</a> </li>
+            <li><a class="nav-link" href="{% url 'quiz:login' %}">{{ user }}</a></li>
             {% if register == 'Register' %}
-            <li><a class="nav-link" href="{% url 'quiz:register' %}">{{register}}</a> </li>
+                <li><a class="nav-link" href="{% url 'quiz:register' %}">{{ register }}</a></li>
             {% else %}
-            <li><a class="nav-link" href="/logout">Sign Out</a> </li>
+                <li><a class="nav-link" href="/logout">Sign Out</a></li>
             {% endif %}
-            <li><a class="nav-link" href="{% url 'quiz:about' %}">About</a> </li>
+            <li><a class="nav-link" href="{% url 'quiz:about' %}">About</a></li>
         </ul>
     </nav>
-    <!-- <div class="cart">
-       About 
-      
-    </div> -->
 
-       
+
 </div>
 
-    <!-- <div id="footer">Footer</div> -->
 
-  
- <div id="fullpage">
+<div id="fullpage">
 
-       
-
-      
-            
-
-    <!-- <div> -->
 
     <div class="section s0">
 
 
-    <main>
-        <!-- <button type="button" class="btn btn-primary" >Small modal</button> -->
-        <section class="presentation">
-            <div class="introduction">
+        <main>
+            <section class="presentation">
+                <div class="introduction">
 
-                <div class="intro-text">
-                    <h1>
-                       Welcome to the Game of Facts
-                    </h1>
-                    <p>
-                        Lets have skill-test and some learning to extend your knowledge in various domains.
-                    </p>
+                    <div class="intro-text">
+                        <h1>
+                            Welcome to the Game of Facts
+                        </h1>
+                        <p>
+                            Lets have skill-test and some learning to extend your knowledge in various domains.
+                        </p>
+                    </div>
+                    <div class="cta">
+                        <button class="cta-select" onclick="start()">Get Started</button>
+                        <button class="cta-add" data-toggle="modal" data-target=".bd-example-modal-sm">Jump to?</button>
+
+
+                    </div>
                 </div>
-                <div class="cta">
-                    <button class="cta-select" onclick="start()">Get Started</button>
-                    <button class="cta-add" data-toggle="modal" data-target=".bd-example-modal-sm" >Jump to?</button>
 
+            </section>
+
+
+        </main>
+
+
+    </div>
+    <div class="section science">
+        <div class="presentation">
+            <div class="introduction">
+                <h1>Science</h1>
+                <p>
+                    Here we will test your knowledge in Physics, Chemistry and Biology.
+                </p>
+
+
+                <div class="cta">
+                    {% for subject in subjects %}
+                        {% if subject.subject_name == "Science" %}
+                            <button class="cta-select" onClick="javascript:location.href ='/{{ subject.pk }}';">Get
+                                Started
+                            </button>
+                        {% endif %}
+                    {% endfor %}
+                    <button class="cta-add" data-toggle="modal" data-target=".bd-example-modal-sm">Jump to?</button>
 
                 </div>
             </div>
-<!--            <div class="cover">-->
-<!--                <img src="../../static/quiz/img/star.gif" class="star"/>-->
-<!--            </div>-->
-        </section>
-        <!-- <div class="laptop-pic">
-
-        </div> -->
-
-
-
-
-
-
-
-<!-- <img class="big-circle" src="" alt="">
-<img class="small-circle" src="" alt="">
-<img src="" alt=""> -->
-
-
-    </main>
-
-
-
-  </div> 
-    <div class="section science">
-      <div class="presentation">
-      <div class="introduction">
-      <h1>Science</h1>
-      <p>
-          Here we will test your knowledge in Physics, Chemistry and Biology.
-      </p>
-    <!-- <img src="../../static/quiz/img/rubic.webp" class="science"/> -->
-
-<div class="cta">
-     {% for subject in subjects %}
-       {% if subject.subject_name == "Science" %}
-    <button class="cta-select"  onClick="javascript:location.href ='/{{subject.pk}}';">Get Started</button>
-    {% endif %}
-      {% endfor %}
-    <button class="cta-add" data-toggle="modal" data-target=".bd-example-modal-sm">Jump to?</button>
-
-</div>
-</div>
-</div>
-</div> 
-  
-
-  
-  <div class="section math">
-    <div class="presentation">
-        <div class="Introduction">
-        <h1>Math</h1>
-        <p>
-            Here we will test your knowledge in Linear Algebra and Logical questions.
-        </p>
-   
-
-  
-  <div class="cta">
-     {% for subject in subjects %}
-       {% if subject.subject_name == "Math" %}
-    <button class="cta-select"  onClick="javascript:location.href ='/{{subject.pk}}';">Get Started</button>
-    {% endif %}
-      {% endfor %}
-    <button class="cta-add" data-toggle="modal" data-target=".bd-example-modal-sm">Jump to?</button>
-
-</div>
-</div>
-
-    <!-- <img src="../../static/quiz/img/sphere.webp" class="math"/> -->
-  </div>
-  </div>
-
-
- <div class="section english">
-    <div class="presentation">
-        <div class="Introduction">
-        <h1>English</h1>
-        <p>
-            Here we will test your knowledge in Literature.
-        </p>
-      <!-- <img src="../../static/quiz/img/rubic.webp" class="science"/> -->
-
-  <div class="cta">
-     {% for subject in subjects %}
-       {% if subject.subject_name == "English" %}
-    <button class="cta-select"  onClick="javascript:location.href ='/{{subject.pk}}';">Get Started</button>
-    {% endif %}
-      {% endfor %}
-    <button class="cta-add" data-toggle="modal" data-target=".bd-example-modal-sm">Jump to?</button>
-
-  </div>
-</div>
-    <!-- <img src="../../static/quiz/img/sphere.webp" class="math"/> -->
-  </div>
-  </div>
-  <div class="section humanities">
-    <div class="presentation">
-        <div class="Introduction">
-        <h1>Humanities</h1>
-        <p>
-            Here we will test your knowledge in Social Sciences.
-        </p>
-      <!-- <img src="../../static/quiz/img/rubic.webp" class="science"/> -->
-
-  <div class="cta">
-     {% for subject in subjects %}
-       {% if subject.subject_name == "Humanities" %}
-    <button class="cta-select"  onClick="javascript:location.href ='/{{subject.pk}}';">Get Started</button>
-    {% endif %}
-      {% endfor %}
-    <button class="cta-add" data-toggle="modal" data-target=".bd-example-modal-sm">Jump to?</button>
-
-</div>
-</div>
-   
-  </div>
-  </div>
-
-
-
-    <!-- <div class="section home">
-            <div class='welcome'>
-            <h1 class="extra" >Welcome to the Knowledge Forge</h1>
         </div>
-        
-            <h3 class="describe">Lets have an interactive quiz to improve 
-                 your skills in various domains of your interest </h3>
-            <div class="pos">
-                 <button type="button" class="btn btn-danger" >Danger</button>
-                 <button type="button" class="btn btn-danger  ">Danger</button>
-                 <button type="button" class="btn btn-danger  ">Danger</button>
-                 <button type="button" class="btn btn-danger  ">Danger</button>
+    </div>
+
+
+    <div class="section math">
+        <div class="presentation">
+            <div class="Introduction">
+                <h1>Math</h1>
+                <p>
+                    Here we will test your knowledge in Linear Algebra and Logical questions.
+                </p>
+
+
+                <div class="cta">
+                    {% for subject in subjects %}
+                        {% if subject.subject_name == "Math" %}
+                            <button class="cta-select" onClick="javascript:location.href ='/{{ subject.pk }}';">Get
+                                Started
+                            </button>
+                        {% endif %}
+                    {% endfor %}
+                    <button class="cta-add" data-toggle="modal" data-target=".bd-example-modal-sm">Jump to?</button>
+
                 </div>
+            </div>
+
+
         </div>
-        <div class="section">Some section
+    </div>
 
 
-            <img src="../../static/quiz/img/rocket.webp" class="science"/>
+    <div class="section english">
+        <div class="presentation">
+            <div class="Introduction">
+                <h1>English</h1>
+                <p>
+                    Here we will test your knowledge in Literature.
+                </p>
+
+                <div class="cta">
+                    {% for subject in subjects %}
+                        {% if subject.subject_name == "English" %}
+                            <button class="cta-select" onClick="javascript:location.href ='/{{ subject.pk }}';">Get
+                                Started
+                            </button>
+                        {% endif %}
+                    {% endfor %}
+                    <button class="cta-add" data-toggle="modal" data-target=".bd-example-modal-sm">Jump to?</button>
+
+                </div>
+            </div>
+
         </div>
-        <div class="section">Some section</div>
-        <div class="section">Some section</div>
-   
-   -->
-    <!-- 
-
-        
-    </section> -->
-
-
+    </div>
+    <div class="section humanities">
+        <div class="presentation">
+            <div class="Introduction">
+                <h1>Humanities</h1>
+                <p>
+                    Here we will test your knowledge in Social Sciences.
+                </p>
 
 
+                <div class="cta">
+                    {% for subject in subjects %}
+                        {% if subject.subject_name == "Humanities" %}
+                            <button class="cta-select" onClick="javascript:location.href ='/{{ subject.pk }}';">Get
+                                Started
+                            </button>
+                        {% endif %}
+                    {% endfor %}
+                    <button class="cta-add" data-toggle="modal" data-target=".bd-example-modal-sm">Jump to?</button>
 
- </div>
+                </div>
+            </div>
 
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js"
-        integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"
-        integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script> -->
+        </div>
+    </div>
 
- <script src="{% static 'quiz/js/fullpage.min.js'  %}"  ></script>
-    <!-- <script src="../../static/quiz/js/bootstrap.js"></script> -->
 
-    <script src="{% static 'quiz/js/custom.js'  %}"  ></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <!-- <script src="./../static/quiz/js/fullpage.extensions.min.js"></script> -->
+</div>
+
+
+<script src="{% static 'quiz/js/fullpage.min.js' %}"></script>
+<!-- <script src="../../static/quiz/js/bootstrap.js"></script> -->
+
+<script src="{% static 'quiz/js/custom.js' %}"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- <script src="./../static/quiz/js/fullpage.extensions.min.js"></script> -->
 
 </body>
 

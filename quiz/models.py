@@ -3,13 +3,22 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+"""
+Db for holding Subjects
+"""
+
 
 class Subject(models.Model):
-    subject_name=models.CharField(max_length=75,default='Extras')
-    description=models.CharField(max_length=2000,default='')
+    subject_name = models.CharField(max_length=75, default='Extras')
+    description = models.CharField(max_length=2000, default='')
 
     def __str__(self):
         return 'Subject name: ' + self.subject_name
+
+
+"""
+Db for holding Profile Info
+"""
 
 
 class Profile(models.Model):
@@ -26,6 +35,7 @@ class Profile(models.Model):
                str(self.points_scored) + ' Questions Attempted: ' + \
                self.questions_attempted
 
+
 @receiver(post_save, sender=User)
 def update_profile_signal(sender, instance, created, **kwargs):
     if created:
@@ -33,13 +43,9 @@ def update_profile_signal(sender, instance, created, **kwargs):
     instance.profile.save()
 
 
-
-
-# class User(User):
-#     name = models.CharField(max_length=75)
-
-
-
+"""
+Db for holding Question
+"""
 
 
 class Question(models.Model):
@@ -58,6 +64,11 @@ class Question(models.Model):
                ' \nPoints :' + str(self.points)
 
 
+"""
+Db for holding Answers and Options
+"""
+
+
 class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     option1 = models.CharField(max_length=200)
@@ -72,6 +83,6 @@ class Answer(models.Model):
         :return: str object
         """
         return 'Option 1: ' + self.option1 + ' \nOption 2: ' + \
-               self.option2 +  ' \nOption 3: ' + self.option3 + \
+               self.option2 + ' \nOption 3: ' + self.option3 + \
                ' \nOption 4: ' + self.option4 + \
                ' \nAnswer: ' + self.correct_option

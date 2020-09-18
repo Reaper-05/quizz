@@ -7,17 +7,22 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<style>
-    input {max-width: 20em}
-    .fon{color: white}
+    <style>
+        input {
+            max-width: 20em
+        }
 
-</style>
-<div clas="box large-row-spacer fon">
-    <form method="POST" class="form-group large-row-spacer bg-white text-dark" >
-	{% csrf_token %}
-  {{form|crispy}}
+        .fon {
+            color: white
+        }
 
-	<button type="submit" class="btn btn-success">Register</button>
-    </form>
-	</div>
+    </style>
+    <div clas="box large-row-spacer fon">
+        <form method="POST" class="form-group large-row-spacer bg-white text-dark">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            <button type="submit" class="btn btn-success">Register</button>
+        </form>
+    </div>
 {% endblock %}
