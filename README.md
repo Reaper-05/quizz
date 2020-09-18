@@ -27,7 +27,7 @@ Username: Reaper-05
 
 Password: ujWHATP6H5LsdJW
 
-Please Register if the sample account has run out of questions
+### Please Register if the sample account has run out of questions
 
 This app is built using Django, full-page.js and bootstrap4.
 Some of the animations are used are credited by open source providers.
