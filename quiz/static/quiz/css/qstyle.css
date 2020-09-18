@@ -111,7 +111,8 @@ padding:0rem 0rem 0rem 0rem;
 /*  background: #89cb66;*/
 /*  font-family: Helvetica Neue, Helvetica, Arial, sans-serif; }*/
 .subject-title{
-    top:-40%;
+    /*top:-150%;*/
+    margin: -150px 0px 5px 10px;
     position: absolute;
 }
 
