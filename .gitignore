@@ -1,7 +1,7 @@
 /db.sqlite3
 /quiz/.vscode/
 # Byte-compiled / optimized / DLL files
-__pycache__/
+
 *.py[cod]
 *$py.class
 .idea
